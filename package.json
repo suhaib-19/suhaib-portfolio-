@@ -1,6 +1,6 @@
 {
   "name": "beautiful-portfolio",
-  "homepage": "https://suhaib-19.github.io/event-craft-app/",
+  "homepage": "https://suhaib-19.github.io/suhaib-portfolio/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -9,7 +9,7 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "predeploy" :"npm run build",
+    "predeploy": "npm run build",
     "deploy": "gh-pages -d dish"
   },
   "dependencies": {
