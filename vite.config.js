@@ -4,7 +4,7 @@ import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 export default defineConfig({
   plugins: [react(),tailwindcss()],
-  base : "/suhaib-portfolio-",
+  base : process.env.VITE_BASE_PATH || "/suhaib-portfolio-"
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src')
