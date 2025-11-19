@@ -1,6 +1,6 @@
 {
   "name": "eventcraft-app",
-  "homepage": "https://suhaib-19.github.io/portfolio/",
+  "homepage": "https://suhaib-19.github.io/suhaib-portfolio-/",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -18,6 +18,7 @@
     "@tailwindcss/vite": "^4.1.11",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "emailjs-com": "^3.2.0",
     "gh-pages": "^6.3.0",
     "lucide-react": "^0.525.0",
     "react": "^19.1.0",

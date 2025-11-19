@@ -1,42 +1,56 @@
+import { useEffect, useRef } from "react";
+
 export const MobileMenu = ({ menuOpen, setMenuOpen }) => {
-    return (
-        <div className={`fixed top-0 left-0 w-full bg-[rgba(10,10,10,0.8)] z-40 flex flex-col items-center justify-center
-  transition-all duration-300 ease-in-out
-  ${menuOpen ? "h-screen opacity-100 pointer-events-auto" : "h-0 opacity-0 pointer-events-none"}
-`}       >
-            <button onClick={() => setMenuOpen(false)} className="absolute top-6 right-6 text-white text-3xl focus:outline-none cursor-pointer"
-                aria-label="close-menu">
-                &times;
-            </button>
-            <a>
-                <a href="#home" onClick={() => setMenuOpen(false)} className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 
-                    ${menuOpen ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-5"
-                    }
-                    
-                    `}>Home</a>
-                <a href="#about" onClick={() => setMenuOpen(false)} className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 
-                    ${menuOpen ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-5"
-                    }
-                    
-                    `}>About</a>
-                <a href="#projects" onClick={() => setMenuOpen(false)} className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 
-                    ${menuOpen ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-5"
-                    }
-                    
-                    `}>Projects</a>
-                <a href="#contact" onClick={() => setMenuOpen(false)} className={`text-2xl font-semibold text-white my-4 transform transition-transform duration-300 
-                    ${menuOpen ? "opacity-100 translate-y-0"
-                        : "opacity-0 translate-y-5"
-                    }
-                    
-                    `}>Contact</a>
-            </a>
-        </div>
+  const ref = useRef(null);
 
+  // Disable scroll when menu is open
+  useEffect(() => {
+    document.body.style.overflow = menuOpen ? "hidden" : "auto";
+  }, [menuOpen]);
 
+  // Close menu when clicked outside
+  const handleClickOutside = (e) => {
+    if (e.target === ref.current) {
+      setMenuOpen(false);
+    }
+  };
 
-    );
-}
+  const menuItems = [
+    { name: "Home", link: "#home" },
+    { name: "About", link: "#about" },
+    { name: "Projects", link: "#projects" },
+    { name: "Contact", link: "#contact" },
+  ];
+
+  return (
+    <div
+      ref={ref}
+      onClick={handleClickOutside}
+      className={`
+        fixed inset-0 bg-black/80 backdrop-blur-md z-[900] flex items-center justify-center 
+        transition-all duration-300 
+        ${menuOpen ? "opacity-100 pointer-events-auto" : "opacity-0 pointer-events-none"}
+      `}
+    >
+      <nav
+        className={`
+          flex flex-col items-center gap-6 
+          transition-all duration-300
+          ${menuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}
+        `}
+      >
+        {menuItems.map((item, i) => (
+          <a
+            key={i}
+            href={item.link}
+            onClick={() => setMenuOpen(false)}
+            className="text-white text-2xl hover:text-blue-400 font-semibold tracking-wide hover:scale-110 transition-transform"
+            style={{ transitionDelay: `${i * 80}ms` }}
+          >
+            {item.name}
+          </a>
+        ))}
+      </nav>
+    </div>
+  );
+};
