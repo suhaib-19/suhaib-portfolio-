@@ -72,7 +72,7 @@ export const Contact = () => {
           <div className="md:col-span-2 border border-white/10 rounded-xl p-5 hover:-translate-y-1 transition">
             <h4 className="text-lg font-semibold text-blue-400">🌐 Portfolio</h4>
             <a
-              href="https://suhaib-19.github.io/suhaib-portfolio-/"
+              href="https://suhaib-portfolio-rymd.vercel.app/"
               className="text-blue-400 hover:underline"
             >
               suhaib-19.github.io/suhaib-portfolio-
