@@ -1,219 +1,123 @@
+import { motion } from "framer-motion";
+
 export const Projects = () => {
+  const projects = [
+    {
+      title: "Lingo - English Learning",
+      desc: "Interactive language learning platform with voice recognition and AI feedback.",
+      tech: ["React", "Web Speech API", "Tailwind"],
+      live: "https://english-ivory.vercel.app/",
+      github: "https://github.com/suhaib-19"
+    },
+    {
+      title: "Brainwave AI",
+      desc: "Modern UI/UX landing page for an AI SaaS application with parallax effects.",
+      tech: ["React", "Parallax", "Tailwind"],
+      live: "https://brainwave-sotk.vercel.app/",
+      github: "https://github.com/suhaib-19"
+    },
+    {
+      title: "Agency AI Website",
+      desc: "Futuristic AI-themed landing page with smooth transitions and branding-focused UI.",
+      tech: ["React", "Tailwind", "Framer Motion"],
+      live: "https://agency-ai-iota-nine.vercel.app/",
+      github: "https://github.com/suhaib-19"
+    },
+    {
+      title: "Real Estate Platform",
+      desc: "Sleek property listing UI with responsive design and smooth navigation.",
+      tech: ["React", "Tailwind", "Vite"],
+      live: "https://estate-xi-seven.vercel.app/",
+      github: "https://github.com/suhaib-19"
+    },
+    {
+      title: "QuickShow UI",
+      desc: "Performance-optimized landing page with clean UI and sharp typography.",
+      tech: ["React", "Tailwind"],
+      live: "https://quick-show-lake.vercel.app/",
+      github: "https://github.com/suhaib-19"
+    },
+    {
+      title: "Spotify Clone",
+      desc: "Responsive music player UI with modern layout and smooth animations.",
+      tech: ["React", "Tailwind"],
+      live: "https://spotify-clone-mu-drab-76.vercel.app/",
+      github: "https://github.com/suhaib-19"
+    }
+  ];
+
   return (
     <section
       id="projects"
-      className="min-h-screen flex items-center justify-center py-20"
+      className="min-h-screen flex items-center justify-center py-20 bg-black relative"
     >
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-3xl font-bold mb-12 bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent text-center">
-          Featured Projects
-        </h2>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            Featured <span className="text-blue-500">Projects</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            A selection of projects that showcase my passion for building experiences.
+          </p>
+        </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {/* Agency AI Website */}
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">🤖 Agency AI Website</h3>
-            <p className="text-gray-400 mb-4">
-              A futuristic AI-themed landing page with smooth transitions,
-              branding-focused UI, and responsive layout designed for modern
-              digital agencies.
-            </p>
-
-            <a
-              href="https://agency-ai-iota-nine.vercel.app/"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-              inline-block transform transition-all duration-300 hover:scale-[1.04]
-              hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {projects.map((project, index) => (
+            <motion.div
+              key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: index * 0.1 }}
+              className="group relative rounded-2xl overflow-hidden bg-white/5 border border-white/10 hover:border-blue-500/50 transition-all duration-300"
             >
-              View Project
-            </a>
-          </div>
+              {/* Content Container */}
+              <div className="p-8 h-full flex flex-col relative z-20">
 
-          {/* Real Estate Website */}
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">🏠 Real Estate Website</h3>
-            <p className="text-gray-400 mb-4">
-              A sleek and modern property listing UI featuring responsive
-              design, smooth navigation, and clean visual structure suitable for
-              real estate platforms.
-            </p>
+                <div className="mb-6">
+                  <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-blue-400 transition-colors">{project.title}</h3>
+                  <p className="text-gray-400 leading-relaxed text-sm mb-6 line-clamp-3">
+                    {project.desc}
+                  </p>
+                  <div className="flex flex-wrap gap-2 mb-8">
+                    {project.tech.map((t, i) => (
+                      <span key={i} className="text-xs font-medium px-3 py-1 bg-blue-500/10 text-blue-400 rounded-full">
+                        {t}
+                      </span>
+                    ))}
+                  </div>
+                </div>
 
-            <a
-              href="https://estate-xi-seven.vercel.app/"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-              inline-block transform transition-all duration-300 hover:scale-[1.04]
-              hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-            >
-              View Project
-            </a>
-          </div>
+                <div className="mt-auto flex gap-4">
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 text-center py-3 rounded-lg bg-blue-600 text-white font-medium text-sm hover:bg-blue-700 transition-colors"
+                  >
+                    Live Demo
+                  </a>
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    rel="noreferrer"
+                    className="flex-1 text-center py-3 rounded-lg bg-white/5 text-white font-medium text-sm hover:bg-white/10 border border-white/10 transition-colors"
+                  >
+                    GitHub
+                  </a>
+                </div>
+              </div>
 
-          {/* QuickShow UI Website */}
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">⚡ QuickShow UI</h3>
-            <p className="text-gray-400 mb-4">
-              A fast, minimal, performance-optimized landing page with clean UI,
-              sharp typography, and modern section transitions.
-            </p>
-
-            <a
-              href="https://quick-show-lake.vercel.app/"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-              inline-block transform transition-all duration-300 hover:scale-[1.04]
-              hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-            >
-              View Project
-            </a>
-          </div>
-
-          {/* E-Commerce Website */}
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">
-              🛒 E-Commerce Website (MERN)
-            </h3>
-            <p className="text-gray-400 mb-4">
-              A complete MERN e-commerce platform featuring secure auth, product
-              management, cart system, checkout flow, order management, and
-              role-based admin dashboard.
-            </p>
-
-            <a
-              href="#"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-              inline-block transform transition-all duration-300 hover:scale-[1.04]
-              hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-            >
-              View Project
-            </a>
-          </div>
-
-          {/* Auth System */}
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">
-              🔐 Authentication System (MERN)
-            </h3>
-            <p className="text-gray-400 mb-4">
-              A secure authentication setup including JWT, password hashing,
-              protected routes, role-based access control, and a clean modern
-              UI.
-            </p>
-
-            <a
-              href="#"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-              inline-block transform transition-all duration-300 hover:scale-[1.04]
-              hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-            >
-              View Project
-            </a>
-          </div>
-          {/* Spotify Clone */}
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">
-              🎧 Spotify Clone (React + Tailwind)
-            </h3>
-            <p className="text-gray-400 mb-4">
-              A clean, responsive Spotify-inspired UI built using React and
-              Tailwind CSS. Includes a modern layout, reusable components, and
-              smooth animations for a premium user experience.
-            </p>
-
-            <a
-              href="https://spotify-clone-mu-drab-76.vercel.app/"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-              inline-block transform transition-all duration-300 hover:scale-[1.04]
-              hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-            >
-              View Project
-            </a>
-          </div>
-
-          {/* Portfolio Website */}
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">💼 Portfolio Website</h3>
-            <p className="text-gray-400 mb-4">
-              A fully responsive personal portfolio built with modern UI
-              principles, showcasing projects, skills, and experience with
-              optimized performance.
-            </p>
-
-            <a
-              href="https://suhaib-19.github.io/suhaib-portfolio-/"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-              inline-block transform transition-all duration-300 hover:scale-[1.04]
-              hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-            >
-              View Portfolio
-            </a>
-          </div>
-
-          {/* Event Planner Dashboard */}
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">
-              📅 Event Planner Dashboard (React + Vite)
-            </h3>
-            <p className="text-gray-400 mb-4">
-              An interactive dashboard for planning and organizing events.
-              Includes responsive UI, modern components, and smooth performance
-              using React + Vite.
-            </p>
-
-            <a
-              href="https://suhaib-19.github.io/event-craft-app/"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-              inline-block transform transition-all duration-300 hover:scale-[1.04]
-              hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-            >
-              View Project
-            </a>
-          </div>
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">
-              📄 Resume Builder Website (MERN)
-            </h3>
-            <p className="text-gray-400 mb-4">
-              A professional Resume Builder platform built using the MERN stack.
-              Users can create, edit, download, and manage resumes with
-              customizable templates and real-time preview features. Includes
-              secure authentication, autosave, and modern UI components.
-            </p>
-
-            <a
-              href="#"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-    inline-block transform transition-all duration-300 hover:scale-[1.04]
-    hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-            >
-              Code Coming Soon
-            </a>
-          </div>
-          <div className="p-6 rounded-xl border border-white/10 hover:-translate-y-1 hover:border-blue-500/30 hover:shadow-[0_0_20px_rgba(59,130,246,0.25)] transition">
-            <h3 className="text-xl font-bold mb-2">
-              🩺 Doctor Appointment System (MERN)
-            </h3>
-            <p className="text-gray-400 mb-4">
-              A complete Doctor Appointment Booking System built with the MERN
-              stack. Features include patient authentication, doctor profiles,
-              available time slots, appointment scheduling, admin dashboard, and
-              status tracking with optimized UI & UX.
-            </p>
-
-            <a
-              href="#"
-              className="px-5 py-2 bg-blue-500 text-white font-medium rounded-md
-    inline-block transform transition-all duration-300 hover:scale-[1.04]
-    hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-            >
-              Code Coming Soon
-            </a>
-          </div>
+              {/* Background Glow Effect */}
+              <div className="absolute inset-0 bg-gradient-to-br from-blue-600/5 to-purple-600/5 group-hover:from-blue-600/10 group-hover:to-purple-600/10 transition-all duration-500 opacity-0 group-hover:opacity-100 z-0"></div>
+            </motion.div>
+          ))}
         </div>
-     
-
-
-
-
-
       </div>
     </section>
   );

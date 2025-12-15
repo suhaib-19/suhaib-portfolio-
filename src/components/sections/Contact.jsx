@@ -1,5 +1,6 @@
 import emailjs from "emailjs-com";
 import { useState } from "react";
+import { motion } from "framer-motion";
 
 export const Contact = () => {
   const [formData, setFormData] = useState({
@@ -28,114 +29,89 @@ export const Contact = () => {
   };
 
   return (
-    <section id="contact" className="min-h-screen flex items-center justify-center py-20">
-      <div className="max-w-4xl mx-auto px-4">
+    <section
+      id="contact"
+      className="min-h-screen flex items-center justify-center py-20 bg-black relative"
+    >
+      <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-3xl md:text-5xl font-bold mb-6 text-white">
+            Get In <span className="text-blue-500">Touch</span>
+          </h2>
+          <p className="text-gray-400 max-w-2xl mx-auto text-lg">
+            Have a project in mind or just want to say hi? I'd love to hear from you.
+          </p>
+        </motion.div>
 
-        {/* Heading */}
-        <h2 className="text-3xl font-bold mb-8 text-center bg-gradient-to-r from-blue-500 to-cyan-400 bg-clip-text text-transparent">
-          Get In Touch
-        </h2>
+        <div className="max-w-3xl mx-auto">
+          <form className="space-y-6" onSubmit={handleSubmit}>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="relative group">
+                <input
+                  type="text"
+                  id="name"
+                  name="name"
+                  required
+                  value={formData.name}
+                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all duration-300"
+                  placeholder="Name"
+                />
+              </div>
 
-        {/* Intro Text */}
-        <p className="text-gray-300 text-center max-w-2xl mx-auto mb-10 leading-relaxed">
-          Let’s build something amazing together!  
-          Feel free to reach out to me for opportunities, collaborations, or freelance work.
-        </p>
+              <div className="relative group">
+                <input
+                  type="email"
+                  id="email"
+                  name="email"
+                  required
+                  value={formData.email}
+                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all duration-300"
+                  placeholder="Email"
+                />
+              </div>
+            </div>
 
-        {/* Contact Info Boxes */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12">
-          <div className="border border-white/10 rounded-xl p-5 hover:-translate-y-1 transition">
-            <h4 className="text-lg font-semibold text-blue-400">📍 Location</h4>
-            <p className="text-gray-300">Chennai, Tamil Nadu</p>
-          </div>
+            <div className="relative group">
+              <textarea
+                id="message"
+                name="message"
+                rows={6}
+                required
+                value={formData.message}
+                onChange={(e) =>
+                  setFormData({ ...formData, message: e.target.value })
+                }
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-4 text-white placeholder-gray-500 focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition-all duration-300"
+                placeholder="Message"
+              ></textarea>
+            </div>
 
-          <div className="border border-white/10 rounded-xl p-5 hover:-translate-y-1 transition">
-            <h4 className="text-lg font-semibold text-blue-400">📧 Email</h4>
-            <p className="text-gray-300">suhaibfullstackdeveloper@gmail.com</p>
-          </div>
-
-          <div className="border border-white/10 rounded-xl p-5 hover:-translate-y-1 transition">
-            <h4 className="text-lg font-semibold text-blue-400">📱 Phone</h4>
-            <p className="text-gray-300">+91 63741 20650</p>
-          </div>
-
-          <div className="border border-white/10 rounded-xl p-5 hover:-translate-y-1 transition">
-            <h4 className="text-lg font-semibold text-blue-400">🔗 GitHub</h4>
-            <a
-              href="https://github.com/suhaib-19"
-              className="text-blue-400 hover:underline"
+            <button
+              type="submit"
+              className="w-full bg-blue-600 text-white font-medium py-4 rounded-lg hover:bg-blue-700 transition-all duration-300 hover:-translate-y-1 hover:shadow-lg hover:shadow-blue-500/30"
             >
-              github.com/suhaib-19
-            </a>
-          </div>
+              Send Message
+            </button>
+          </form>
 
-          <div className="md:col-span-2 border border-white/10 rounded-xl p-5 hover:-translate-y-1 transition">
-            <h4 className="text-lg font-semibold text-blue-400">🌐 Portfolio</h4>
-            <a
-              href="https://suhaib-portfolio-rymd.vercel.app/"
-              className="text-blue-400 hover:underline"
-            >
-              suhaib-19.github.io/suhaib-portfolio-
-            </a>
+          <div className="mt-12 pt-8 border-t border-white/10 flex flex-col md:flex-row justify-between items-center gap-4 text-gray-400">
+            <div className="text-sm">
+              © {new Date().getFullYear()} Suhaib. Built with ❤️.
+            </div>
+            <div className="flex gap-6">
+              <a href="https://github.com/suhaib-19" className="hover:text-white transition-colors">GitHub</a>
+              <a href="mailto:suhaibfullstackdeveloper@gmail.com" className="hover:text-white transition-colors">Email</a>
+              <a href="https://www.linkedin.com/in/mohammed-suhaib-b-fullstackdeveloper" className="hover:text-white transition-colors">LinkedIn</a>
+            </div>
           </div>
         </div>
-
-        {/* Contact Form */}
-        <form className="space-y-6 max-w-3xl mx-auto" onSubmit={handleSubmit}>
-          <div>
-            <input
-              type="text"
-              id="name"
-              name="name"
-              required
-              value={formData.name}
-              placeholder="Your Name"
-              onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white
-              focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition"
-            />
-          </div>
-
-          <div>
-            <input
-              type="email"
-              id="email"
-              name="email"
-              required
-              value={formData.email}
-              placeholder="Your Email"
-              onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-              className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white
-              focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition"
-            />
-          </div>
-
-          <div>
-            <textarea
-              id="message"
-              name="message"
-              rows={5}
-              required
-              value={formData.message}
-              placeholder="Your Message"
-              onChange={(e) =>
-                setFormData({ ...formData, message: e.target.value })
-              }
-              className="w-full bg-white/5 border border-white/10 rounded px-4 py-3 text-white
-              focus:outline-none focus:border-blue-500 focus:bg-blue-500/5 transition"
-            ></textarea>
-          </div>
-
-          {/* Submit Button */}
-          <button
-            type="submit"
-            className="w-full bg-blue-500 text-white py-3 px-6 rounded font-medium 
-            transform transition-all duration-300 hover:scale-[1.04]
-            hover:shadow-[0_0_20px_rgba(59,130,246,0.5)] active:scale-95"
-          >
-            Send Message
-          </button>
-        </form>
       </div>
     </section>
   );
