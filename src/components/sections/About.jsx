@@ -21,37 +21,59 @@ export const About = () => {
 
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed font-light">
               <p>
-                I’m a passionate <span className="text-blue-400 font-semibold relative inline-block">
+                I’m a passionate{" "}
+                <span className="text-blue-400 font-semibold relative inline-block">
                   Junior MERN Stack Developer
                   <span className="absolute bottom-0 left-0 w-full h-[1px] bg-blue-400/50"></span>
-                </span> with a unique background in Business Management (MBA) turned Tech. This combination allows me to understand both the code and the product goals.
+                </span>{" "}
+                with a unique background in Business Management (MBA) turned Tech.
+                This combination allows me to understand both the code and the
+                product goals.
               </p>
 
               <p>
-                I don't just write code; I build <span className="text-white font-medium">solutions</span>. My focus is on creating intuitive, performant, and delightful interfaces that users love to interact with.
+                I don't just write code; I build{" "}
+                <span className="text-white font-medium">solutions</span>. My focus
+                is on creating intuitive, performant, and delightful interfaces
+                that users love to interact with.
               </p>
 
               <p>
-                Currently working at <span className="text-blue-400 font-medium">Corvanta Analytics</span>, where I'm honing my craft in building scalable web applications.
+                Currently working at{" "}
+                <span className="text-blue-400 font-medium">
+                  Corvanta Analytics
+                </span>
+                , where I'm honing my craft in building scalable web applications.
               </p>
             </div>
 
+            {/* Resume Website CTA (PDF Removed – Website Shown Instead) */}
             <div className="mt-10">
               <a
-                href="/resume.pdf"
-                download="Suhaib_Resume.pdf"
+                href="https://suhaib-resume.vercel.app/"
+                target="_blank"
+                rel="noopener noreferrer"
                 className="inline-flex items-center justify-center px-8 py-3 text-base font-medium text-white bg-white/5 border border-white/10 rounded-full hover:bg-blue-600 hover:border-blue-600 transition-all duration-300 group"
               >
-                Download Resume
-                <svg className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4" />
+                View Resume Website
+                <svg
+                  className="w-5 h-5 ml-2 transform group-hover:translate-x-1 transition-transform"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth={2}
+                    d="M14 3h7v7m0-7L10 14m-4 7h11a3 3 0 003-3V7"
+                  />
                 </svg>
               </a>
             </div>
           </motion.div>
 
           {/* Abstract Visual / Image Placeholder */}
-          {/* Abstract Geometric Art / "Digital Mind" */}
           <motion.div
             initial={{ opacity: 0, scale: 0.9 }}
             whileInView={{ opacity: 1, scale: 1 }}
@@ -59,35 +81,38 @@ export const About = () => {
             transition={{ duration: 0.8 }}
             className="relative h-[400px] w-full rounded-2xl overflow-hidden bg-white/5 border border-white/10 flex items-center justify-center group"
           >
-            {/* Animated Gradient Background */}
             <div className="absolute inset-0 bg-gradient-to-br from-black via-gray-900 to-blue-900/20"></div>
 
-            {/* Rotating Rings / "Orbit" Effect */}
             <div className="relative w-64 h-64">
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-0 border border-blue-500/20 rounded-full border-dashed"
               ></motion.div>
+
               <motion.div
                 animate={{ rotate: -360 }}
                 transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-4 border border-purple-500/20 rounded-full border-dotted"
               ></motion.div>
+
               <motion.div
                 animate={{ rotate: 360 }}
                 transition={{ duration: 25, repeat: Infinity, ease: "linear" }}
                 className="absolute inset-8 border border-white/10 rounded-full"
               ></motion.div>
 
-              {/* Floating "Core" */}
               <motion.div
                 animate={{
                   y: [-10, 10, -10],
                   scale: [1, 1.05, 1],
                   filter: ["blur(0px)", "blur(2px)", "blur(0px)"]
                 }}
-                transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+                transition={{
+                  duration: 4,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
                 className="absolute inset-0 flex items-center justify-center"
               >
                 <div className="w-24 h-24 bg-gradient-to-tr from-blue-600 to-purple-600 rounded-full blur-md opacity-80"></div>
@@ -97,7 +122,6 @@ export const About = () => {
               </motion.div>
             </div>
 
-            {/* Floating Code Snippets / Decorators */}
             <motion.div
               animate={{ y: [-5, 5, -5], opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 3, repeat: Infinity, delay: 0.5 }}
@@ -105,6 +129,7 @@ export const About = () => {
             >
               &lt;Code /&gt;
             </motion.div>
+
             <motion.div
               animate={{ y: [5, -5, 5], opacity: [0.5, 1, 0.5] }}
               transition={{ duration: 4, repeat: Infinity, delay: 1 }}
